@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from sys import api_version
 
 #UTH_USER_MODEL = 'resturant.CustomUser'
 
@@ -133,9 +134,16 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'manojantony@gmail.com'
+# EMAIL_HOST_PASSWORD = 'rwkm fttn hcqi ebgm'
+# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+### settings.py
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'manojantony@gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'manojantony295@gmail.com'
 EMAIL_HOST_PASSWORD = 'rwkm fttn hcqi ebgm'
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"

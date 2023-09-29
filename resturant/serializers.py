@@ -1,7 +1,7 @@
 # authentication/serializers.py
 
 from rest_framework import serializers
-from .models import CustomUser, Order, OrderItem
+from .models import CustomUser, Order#, OrderItem
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -37,14 +37,14 @@ class ProductSerializer(serializers.ModelSerializer):
 #         model = FoodItem
 #         fields = '__all__'
 
-class OrderItemSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = OrderItem
-        fields = '__all__'
+# class OrderItemSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = OrderItem
+#         fields = '__all__'
 
 class OrderSerializer(serializers.ModelSerializer):
-    order_items = OrderItemSerializer(many=True, read_only=True)
-
+    #order_items = OrderSerializer(many=True, read_only=True)
     class Meta:
         model = Order
-        fields = '__all__'
+        #fields = '__all__'
+        fields = ['id', 'product_name', 'category_name', 'quantity', 'total_price', 'created_at'] # 'category_name',
