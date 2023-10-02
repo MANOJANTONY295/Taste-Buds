@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'rest_framework.authtoken',
     'resturant',
 ]
 
@@ -147,3 +148,11 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'manojantony295@gmail.com'
 EMAIL_HOST_PASSWORD = 'rwkm fttn hcqi ebgm'
+
+AUTH_USER_MODEL = 'resturant.CustomUser'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}

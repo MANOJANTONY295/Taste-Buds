@@ -6,11 +6,14 @@ from .models import CustomUser, Order#, OrderItem
 class UserRegistrationSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ('id','email', 'password', 'first_name', 'last_name')
+        fields = ['id','email', 'password', 'first_name', 'last_name']
 
 class UserLoginSerializer(serializers.Serializer):
-    email = serializers.EmailField()
-    password = serializers.CharField()
+    class Meta:
+        model = CustomUser
+        fields =['email', 'password']
+        email = serializers.EmailField()
+        password = serializers.CharField()
 
 
 from .models import Categorys, Products
@@ -48,3 +51,25 @@ class OrderSerializer(serializers.ModelSerializer):
         model = Order
         #fields = '__all__'
         fields = ['id', 'product_name', 'category_name', 'quantity', 'total_price', 'created_at'] # 'category_name',
+
+
+#test purpose
+# accounts/serializers.py
+
+from rest_framework import serializers
+from .models import CustomUser
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ['username', 'email', 'password']
+        extra_kwargs = {'password': {'write_only': True}}
+
+    def create(self, validated_data):
+        user = CustomUser(
+            username=validated_data['username'],
+            email=validated_data['email']
+        )
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
